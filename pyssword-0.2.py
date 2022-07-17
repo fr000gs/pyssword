@@ -4,7 +4,6 @@ from hashlib import sha512
 from tkinter import Label
 
 master_password = 'foo'
-separator = '@'
 
 # Creating tkinter window
 win = tk.Tk()
@@ -15,7 +14,7 @@ win.resizable(True, True)
 def pswd():
     global pss
     pswd = master_pswd_area.get('1.0', tk.END)[:-1]
-    site = username_area.get('1.0', tk.END)[:-1] + separator + website_area.get('1.0' , tk.END)[:-1]
+    site = username_area.get('1.0', tk.END)[:-1] + website_area.get('1.0' , tk.END)[:-1]
     enc = sha512()
     enc.update(bytes(pswd + site, 'utf-8'))
     pss = enc.hexdigest()[::8] + '@A'
