@@ -8,3 +8,9 @@ pyssword requires a master password for hash generation. It is set by default to
 ## Copy to clipboard
 pyssword has an option to copy the password to clipboard.
 
+## Installing
+Run the file with python 3.
+
+    python pyssword-0.2.py
+
+For using pyssword on Windows, a pyinstaller bundled folder archive is provided. Extract the archive and run `pyssword-0.2.exe`
