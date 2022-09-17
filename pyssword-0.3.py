@@ -23,7 +23,6 @@ def pswd():
     pss = enc.hexdigest()[::8] + '@A'
     display_area.delete('0', tk.END)
     display_area.insert(tk.INSERT, pss)
-    show_toggle()
 
 def ctoc():
     try: win.clipboard_clear()
@@ -72,21 +71,21 @@ label_area_4 = Label(win, text='Show')
 label_area_4.grid(row = 0, column = 3)
 
 checkbutton_1_value = IntVar()
-checkbutton_1 = Checkbutton(win, variable = checkbutton_1_value)
+checkbutton_1 = Checkbutton(win, variable = checkbutton_1_value, command=show_toggle)
 checkbutton_1.select()
 checkbutton_1.grid(row = 1, column = 3)
 
 checkbutton_2_value = IntVar()
-checkbutton_2 = Checkbutton(win, variable = checkbutton_2_value)
+checkbutton_2 = Checkbutton(win, variable = checkbutton_2_value, command=show_toggle)
 checkbutton_2.select()
 checkbutton_2.grid(row = 3, column = 3)
 
 checkbutton_3_value = IntVar()
-checkbutton_3 = Checkbutton(win, variable = checkbutton_3_value)
+checkbutton_3 = Checkbutton(win, variable = checkbutton_3_value, command=show_toggle)
 checkbutton_3.grid(row = 5, column = 3)
 
 checkbutton_4_value = IntVar()
-checkbutton_4 = Checkbutton(win, variable = checkbutton_4_value)
+checkbutton_4 = Checkbutton(win, variable = checkbutton_4_value, command=show_toggle)
 checkbutton_4.grid(row = 7, column = 3)
 
 username_area = tk.Entry(win)
@@ -111,17 +110,14 @@ master_pswd_area.insert(tk.INSERT, master_password)
 display_area = Entry(win)
 display_area.grid(row = 7, column=1, padx = 10, pady = 10)
 
-button_generate = tk.Button(win, text="OK", command=pswd)
-button_generate.grid(row=1, column=4, padx = 10, pady = 10)
-button_generate['background']='#33ff33'
+close_button = tk.Button(win, text = 'Exit', command=win.destroy, background = '#33ff33')
+close_button.grid(row=1, column=4, padx = 10, pady = 10)
 
-C2CB = tk.Button(win, text = "Copy to clipboard", command = ctoc)
-C2CB.grid(row=3, column=4, padx = 10, pady = 10)
-C2CB['background']='#33ff77'
+button_generate = tk.Button(win, text="OK", command=pswd, background = '#33ff33')
+button_generate.grid(row=3, column=4, padx = 10, pady = 10)
 
-show_button = tk.Button(win, text = "Show/Hide", command = show_toggle)
-show_button.grid(row=5, column=4, padx = 10, pady = 10)
-show_button['background']='#33ff33'
+C2CB = tk.Button(win, text = "Copy to clipboard", command = ctoc, background = '#33ff77')
+C2CB.grid(row=5, column=4, padx = 10, pady = 10)
 
 show_toggle()
 win.mainloop()
